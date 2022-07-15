@@ -25,7 +25,7 @@
 
 
 <form method="POST">
-    <input type="hidden" name="id" value="@Model.pelamarInfo.id">
+    <input type="hidden" name="id"  value="@Model.pelamarInfo.id">
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Nama:</label>
         <div class="col-sm-6">
@@ -36,7 +36,7 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Tanggal lahir:</label>
         <div class="col-sm-6">
-            <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="@Model.pelamarInfo.tanggal_lahir">
+            <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="@Model.pelamarInfo.tanggal_lahir" readonly>
         </div>
     </div>
 
@@ -72,7 +72,7 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Posisi Yang dipilih:</label>
         <div class="col-sm-9">
-            <select class="form-select" aria-label="Default select example" name="posisi_dipilih">
+            <select class="form-select" aria-label="Default select example" name="posisi_dipilih" value="@Model.pelamarInfo.posisi_dipilih">
                   <option selected disabled>Open this select menu</option>
                   <option value="Progammer">Progammer</option>
                   <option value="Pre Sales">Pre Sales</option>
@@ -99,12 +99,26 @@
         </div>
     </div>
 
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Tanggal Dibuat:</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="created_at" id="created_at" value="@Model.pelamarInfo.created_at" readonly>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Tanggal Terakhir Update:</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="updated_at" id="updated_at" value="@Model.pelamarInfo.updated_at" readonly>
+        </div>
+    </div>
+
   
 
     <div class="row mb-3">
        
         <div class="col-sm-9">
-            <button type="submit" class="btn btn-outline-primary float-right">Tambah Data</button>
+            <button type="submit" class="btn btn-outline-primary float-right">Ubah Data</button>
         </div>
     </div>
 

@@ -43,8 +43,8 @@
                 </td>
                 <td>@item.created_at</td>
                 <td>@item.updated_at</td>
-                <td><a class="btn btn-warning btn-sm" href="/Home/Edit?id=">Edit</a></td>
-                <td><a class="btn btn-danger btn-sm" href="/Home/Delete?id=">Delete</a></td>
+                <td><a class="btn btn-warning btn-sm" href="/Home/Edit?id=@item.id">Edit</a></td>
+                <td><a class="btn btn-danger btn-sm" href="/Home/Delete?id=@item.id">Delete</a></td>
             </tr>
         }
     </tbody>
