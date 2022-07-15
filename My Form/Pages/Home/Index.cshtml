@@ -1,0 +1,52 @@
+﻿@page
+@model My_Form.Pages.Home.IndexModel
+@{
+}
+
+<br>
+<h2>LIST PELAMAR</h2>
+<a class='btn btn-primary btn-sm' href="/Home/Create">New Pelamar</a>
+<br>
+ 
+<table class="table">
+    <thead>
+        <tr>
+        <th>ID</th>
+        <th>Nama</th>
+        <th>Tanggal lahir</th>
+        <th>Domisili</th>
+        <th>Pendidikan Terakhir</th>
+        <th>Posisi Dipilih</th>
+        <th>Apakah Merokok?</th>
+        <th>Tanggal Dibuat</th>
+        <th>Tanggal Update</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.ListPelamar)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.nama</td>
+                <td>@item.tanggal_lahir</td>
+                <td>@item.domisili  </td>
+                <td>@item.pendidikan_terakhir</td>
+                <td>@item.posisi_dipilih</td>
+                <td>@if (item.merokok == "0")
+                    {
+                        <p>tidak</p>
+                    }
+                    else
+                    {
+                        <p>Ya</p>
+                    }
+                </td>
+                <td>@item.created_at</td>
+                <td>@item.updated_at</td>
+                <td><a class="btn btn-warning btn-sm" href="/Home/Edit?id=">Edit</a></td>
+                <td><a class="btn btn-danger btn-sm" href="/Home/Delete?id=">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+    
+</table>

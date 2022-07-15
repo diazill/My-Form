@@ -1,0 +1,110 @@
+﻿@page
+@model My_Form.Pages.Home.CreateModel
+@{
+}
+
+<br>
+<h2>Tambah Pelamar Baru</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+    <div class='alert alert-danger alert-dismissible fade show' role="alert">
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss='alert' aria-label="close"></button>
+    </div>
+}
+
+@if (Model.successMessage.Length > 0)
+{
+    <div class='alert alert-success alert-dismissible fade show' role="alert">
+        <strong>@Model.successMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss='alert' aria-label="close"></button>
+    </div>
+}
+
+
+<form method="POST">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Nama:</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="nama" id="nama" value="@Model.pelamarInfo.nama">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Tanggal lahir:</label>
+        <div class="col-sm-6">
+            <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="@Model.pelamarInfo.tanggal_lahir">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Domisili:</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="domisili" id="domisili" value="@Model.pelamarInfo.domisili">
+        </div>
+    </div>
+    <!--<div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Tingkat Pendidikan Terakhir:</label>
+        <div class="col-sm-9">
+            <select class="form-select" aria-label="Default select example" name="tingkat_pendidikan">
+                  <option selected disabled>Open this select menu</option>
+                  <option value="Sma">Sma</option>
+                  <option value="D3">D3</option>
+                  <option value="D4">D4</option>
+                  <option value="S1">S1</option>
+                  <option value="S2">S2</option>
+                  <option value="S3">S3</option>
+            </select>
+        </div>
+    </div>-->
+    
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Pendidikan Terakhir:</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="pendidikan_terakhir" id="pendidikan_terakhir" value="@Model.pelamarInfo.pendidikan_terakhir">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Posisi Yang dipilih:</label>
+        <div class="col-sm-9">
+            <select class="form-select" aria-label="Default select example" name="posisi_dipilih">
+                  <option selected disabled>Open this select menu</option>
+                  <option value="Progammer">Progammer</option>
+                  <option value="Pre Sales">Pre Sales</option>
+                  <option value="Tax Accountant">Tax Accountant</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Merokok ? </label>
+        <div class="col-sm-6">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="merokok" id="merokok" value="1">
+                <label class="form-check-label" for="merokok">
+                    Ya
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="merokok" id="merokok" checked value="0">
+                <label class="form-check-label" for="merokok">
+                    Tidak
+                </label>
+            </div>
+        </div>
+    </div>
+
+  
+
+    <div class="row mb-3">
+       
+        <div class="col-sm-9">
+            <button type="submit" class="btn btn-outline-primary float-right">Tambah Data</button>
+        </div>
+    </div>
+
+    
+</form>
