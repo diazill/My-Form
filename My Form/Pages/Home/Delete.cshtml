@@ -1,0 +1,33 @@
+﻿@page
+@using System.Data.SqlClient;
+@model My_Form.Pages.Home.DeleteModel
+@{
+    try
+    {
+        String id = Request.Query["id"];
+
+
+        String connectionString = "Data Source=LAPTOP-IDEAPAD3;Initial Catalog=db_hnp;Integrated Security=True";
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+
+            String sql = "DELETE FROM pelamar WHERE id=@id";
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@id", id);
+
+                command.ExecuteNonQuery();
+
+
+            }
+        }
+
+    }
+    catch (Exception ex)
+    {
+
+    }
+
+    Response.Redirect("/Home/Index");
+}
