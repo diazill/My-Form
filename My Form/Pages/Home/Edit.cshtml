@@ -69,14 +69,22 @@
         </div>
     </div>
 
+    @*<div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Posisi Yang dipilih:</label>
+        <div class="col-sm-9">
+            <input type="number" class="form-control" name="id_posisi" id="id_posisi" value="@Model.pelamarInfo.id_posisi">
+
+        </div>
+    </div>*@
+
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Posisi Yang dipilih:</label>
         <div class="col-sm-9">
-            <select class="form-select" aria-label="Default select example" name="posisi_dipilih" value="@Model.pelamarInfo.posisi_dipilih">
-                  <option selected disabled>Open this select menu</option>
-                  <option value="Progammer">Progammer</option>
-                  <option value="Pre Sales">Pre Sales</option>
-                  <option value="Tax Accountant">Tax Accountant</option>
+           <select class="form-select" aria-label="Default select example" name="id_posisi  ">
+                  <option disabled>Pilih Posisi</option>
+
+                    <option selected value="@Model.pelamarInfo.id_posisi">@Model.pelamarInfo.id_posisi</option>
+   
             </select>
         </div>
     </div>

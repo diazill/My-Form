@@ -16,23 +16,22 @@
         <th>Tanggal lahir</th>
         <th>Domisili</th>
         <th>Pendidikan Terakhir</th>
-        <th>Posisi Dipilih</th>
         <th>Apakah Merokok?</th>
         <th>Tanggal Dibuat</th>
         <th>Tanggal Update</th>
+        <th>Posisi Dipilih</th>
     </tr>
     </thead>
     <tbody>
-        @foreach(var item in Model.ListPelamar)
+        @foreach(var it in Model.ListPelamar)
         {
             <tr>
-                <td>@item.id</td>
-                <td>@item.nama</td>
-                <td>@item.tanggal_lahir</td>
-                <td>@item.domisili  </td>
-                <td>@item.pendidikan_terakhir</td>
-                <td>@item.posisi_dipilih</td>
-                <td>@if (item.merokok == "0")
+                <td>@it.id</td>
+                <td>@it.nama</td>
+                <td>@it.tanggal_lahir</td>
+                <td>@it.domisili</td>
+                <td>@it.pendidikan_terakhir</td>
+                <td>@if (it.merokok == "0")
                     {
                         <p>tidak</p>
                     }
@@ -41,10 +40,11 @@
                         <p>Ya</p>
                     }
                 </td>
-                <td>@item.created_at</td>
-                <td>@item.updated_at</td>
-                <td><a class="btn btn-warning btn-sm" href="/Home/Edit?id=@item.id">Edit</a></td>
-                <td><a class="btn btn-danger btn-sm" href="/Home/Delete?id=@item.id">Delete</a></td>
+                <td>@it.created_at</td>
+                <td>@it.updated_at</td>
+                <td>@it.id_posisi</td>
+                <td><a class="btn btn-warning btn-sm" href="/Home/Edit?id=@it.id">Edit</a></td>
+                <td><a class="btn btn-danger btn-sm" href="/Home/Delete?id=@it.id">Delete</a></td>
             </tr>
         }
     </tbody>

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -22,6 +23,7 @@ namespace My_Form.Pages.Home
                 {
                     connection.Open();
                     String sql = "SELECT * FROM pelamar WHERE id=@id";
+                    
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@id", id);
@@ -34,10 +36,10 @@ namespace My_Form.Pages.Home
                                 pelamarInfo.tanggal_lahir = reader.GetDateTime(2).ToString("MM/dd/yyyy");
                                 pelamarInfo.domisili = reader.GetString(3);
                                 pelamarInfo.pendidikan_terakhir = reader.GetString(4);
-                                pelamarInfo.posisi_dipilih = reader.GetString(5);
-                                pelamarInfo.merokok = "" + reader.GetInt32(6);
-                                pelamarInfo.created_at = reader.GetDateTime(7).ToString("MM/dd/yyyy");
-                                pelamarInfo.updated_at = reader.GetDateTime(8).ToString("MM/dd/yyyy");
+                                pelamarInfo.merokok = "" + reader.GetInt32(5);
+                                pelamarInfo.created_at = reader.GetDateTime(6).ToString("MM/dd/yyyy");
+                                pelamarInfo.updated_at = reader.GetDateTime(7).ToString("MM/dd/yyyy");
+                                pelamarInfo.id_posisi = "" + reader.GetInt32(8);
                             }
                         }
                     }
@@ -59,10 +61,10 @@ namespace My_Form.Pages.Home
             pelamarInfo.domisili = Request.Form["domisili"];
             //pelamarInfo.pendidikan_terakhir = Request.Form["tingkat_pendidikan"];
             pelamarInfo.pendidikan_terakhir = Request.Form["pendidikan_terakhir"];
-            pelamarInfo.posisi_dipilih = Request.Form["posisi_dipilih"];
             pelamarInfo.merokok = Request.Form["merokok"];
             pelamarInfo.created_at = Request.Form["created_at"];
             pelamarInfo.updated_at = System.DateTime.Now.ToString("MM/dd/yyyy");
+            pelamarInfo.id_posisi = Request.Form["id_posisi"];
 
 
             if (pelamarInfo.nama.Length == 0 || pelamarInfo.domisili.Length == 0 || pelamarInfo.tanggal_lahir.Length == 0)
@@ -78,7 +80,7 @@ namespace My_Form.Pages.Home
                 {
                     connection.Open();
                     String sql = "UPDATE pelamar " +
-                                 "SET nama=@nama, tanggal_lahir=@tanggal_lahir, domisili=@domisili, pendidikan_terakhir=@pendidikan_terakhir, posisi_dipilih=@posisi_dipilih, merokok=@merokok, created_at=@created_at, updated_at=@updated_at " +
+                                 "SET nama=@nama, tanggal_lahir=@tanggal_lahir, domisili=@domisili, pendidikan_terakhir=@pendidikan_terakhir, merokok=@merokok,  updated_at=@updated_at, id_posisi=@id_posisi" +
                                  "WHERE id=@id";
 
 
@@ -90,12 +92,11 @@ namespace My_Form.Pages.Home
                         command.Parameters.AddWithValue("@tanggal_lahir", pelamarInfo.tanggal_lahir);
                         command.Parameters.AddWithValue("@domisili", pelamarInfo.domisili);
                         command.Parameters.AddWithValue("@pendidikan_terakhir", pelamarInfo.pendidikan_terakhir);
-                        command.Parameters.AddWithValue("@posisi_dipilih", pelamarInfo.posisi_dipilih);
                         command.Parameters.AddWithValue("@merokok", pelamarInfo.merokok);
-                        command.Parameters.AddWithValue("@created_at", pelamarInfo.created_at);
                         command.Parameters.AddWithValue("@updated_at", pelamarInfo.updated_at);
                         command.Parameters.AddWithValue("@id", pelamarInfo.id);
-                        
+                        command.Parameters.AddWithValue("@posisi_dipilih", pelamarInfo.id_posisi);
+
                         //command.Parameters.Add("@id", SqlDbType.Int).Value = pelamarInfo.id;
 
                         command.ExecuteNonQuery();
@@ -111,4 +112,6 @@ namespace My_Form.Pages.Home
             Response.Redirect("/Home/Index");
         }
     }
+
+
 }

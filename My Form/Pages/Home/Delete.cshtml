@@ -2,9 +2,12 @@
 @using System.Data.SqlClient;
 @model My_Form.Pages.Home.DeleteModel
 @{
+
+    
     try
     {
         String id = Request.Query["id"];
+
 
 
         String connectionString = "Data Source=LAPTOP-IDEAPAD3;Initial Catalog=db_hnp;Integrated Security=True";
@@ -26,7 +29,7 @@
     }
     catch (Exception ex)
     {
-
+        
     }
 
     Response.Redirect("/Home/Index");
